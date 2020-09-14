@@ -1,0 +1,31 @@
+<div style="padding-top: 5%;height: 100vh;">
+    <div class="main">
+        <div class="top-block">
+            <div class="title">Calculator</div>
+            <button class="top-block-hide">–</button>
+            <button>☐</button>
+            <button class="xButton">×</button>
+        </div>
+        <div class="display">
+            {{this.display}}
+        </div>
+        <div class="memory-block">
+            <div class="mBlock-detail" (click)="clickedMemoryButton($event)" *ngFor="let m of mSymbols">{{m}}</div>
+        </div>
+        <div class="numbers-and-operations-block">
+            <div class="symbols">
+                <div class="detail" *ngFor="let s of symbols">
+                    {{changeNumbersColor(s)}}
+                    
+                    <button class="number" *ngIf="numberFound" (click)="clickedNumber($event)">
+                        {{s}}
+                    </button>
+                    <button class="notNumber" *ngIf="!numberFound && !equalFound" (click)="clickedOperation($event)">
+                        {{s}}
+                    </button>
+                    <button class="equalButton" *ngIf="equalFound" (click)="clickedOperation($event)">{{s}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

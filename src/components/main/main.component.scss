@@ -1,0 +1,100 @@
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 20%;
+    color: white;
+    background-color: #213d4b;
+    font-size: 100%;
+    margin-left: 40%;
+    font-family: sans-serif;
+}
+.title {
+    padding: 4% 5%;
+    font-size: 80%;
+}
+.top-block {
+    display: flex;
+}
+.top-block-hide {
+    margin-left: auto;
+}
+.top-block button {
+    background-color: #213d4b;
+    width: 15%;
+    font-size: 130%;
+}
+.top-block button:hover {
+    background-color: darkgray;
+    color: rgb(26, 25, 25);
+}
+.xButton:hover {
+    background-color: rgba(255, 0, 0, 0.644) !important;
+}
+.display {
+    text-align: right;
+    margin-top: auto;
+    padding: 0 5%;
+    font-size: 200%;
+    margin-bottom: 2%;
+}
+.memory-block {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
+    margin-right: 3%;
+    font-size: 70%;
+}
+.mBlock-detail {
+    width: 16.5%;
+    margin-left: 1%;
+    text-align: center;
+    padding: 2% 0;
+    flex: 1 0 15%;
+}
+.mBlock-detail:hover {
+    background-color: rgba(243, 250, 250, 0.753);
+    color: black;
+}
+.numbers-and-operations-block {
+    height: 65%;
+    margin-top: 2%;
+}
+.symbols {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.detail {
+    flex: 1 1 21%;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+.number {
+    background-color: #070c0f;
+    font-size: 130%;
+    width: 100%;
+}
+.notNumber {
+    background-color: #13252f;
+    width: 100%;
+    font-size: 100%;
+}
+.equalButton {
+    background-color: #2d99f1;
+    font-size: 100%;
+    width: 100%;
+}
+.equalButton:hover {
+    background-color: #6ab0e9;
+}
+button {
+    color: white;
+    border: none;
+    height: 100%;
+}
+button:hover {
+    background-color: #070c0fab;
+}
+button:focus {outline:0;}
