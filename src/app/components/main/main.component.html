@@ -1,4 +1,4 @@
-<div style="padding-top: 5%;height: 100vh;">
+<div style="padding-top: 5%; height: 100vh;">
     <div class="main">
         <div class="top-block">
             <div class="title">Calculator</div>
@@ -6,13 +6,18 @@
             <button>☐</button>
             <button class="xButton">×</button>
         </div>
+        <div class="second-block">
+            <div class="ham"><img class="icons" src="../../../assets/images/hamburger-icon.png"></div>
+            <span class="st-text">Standard</span>
+            <div class="ham his" (click)="historyIconClicked()"><img class="icons" src="https://www.materialui.co/materialIcons/action/history_white_192x192.png"></div>
+        </div>
         <div class="display">
             {{this.display}}
         </div>
         <div class="memory-block">
             <div class="mBlock-detail" (click)="clickedMemoryButton($event)" *ngFor="let m of mSymbols">{{m}}</div>
         </div>
-        <div class="numbers-and-operations-block">
+        <div class="numbers-and-operations-block" *ngIf="!showHistory">
             <div class="symbols">
                 <div class="detail" *ngFor="let s of symbols">
                     {{changeNumbersColor(s)}}
@@ -26,6 +31,15 @@
                     <button class="equalButton" *ngIf="equalFound" (click)="clickedOperation($event)">{{s}}</button>
                 </div>
             </div>
+        </div>
+        <div *ngIf="showHistory" class="numbers-and-operations-block history">
+            <div style="overflow:auto; margin-bottom: 0.5%;">
+                <div class="history-items" *ngFor="let h of histories; let i = index">
+                    <div class="history-items-operation">{{h}}</div>
+                    <div class="result">{{results[i]}}</div>
+                </div>
+            </div>
+            <div class="remove-btn" (click)="removeHistory()"><img class="icons" src="../../../assets/images/delete.png"></div>
         </div>
     </div>
 </div>

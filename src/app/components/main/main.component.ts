@@ -1,12 +1,14 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { R3DelegatedFnOrClassMetadata } from '@angular/compiler/src/render3/r3_factory';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
+  constructor(private mainService: MainService) { }
   symbols = [
     '%','√','x^2','|1/x|',
     'CE','C','⌫','➗',
@@ -21,14 +23,20 @@ export class MainComponent implements OnInit {
   equalPressed = false;
   equalFound = false;
   backspaceAvailable = true;
+  showHistory = false;
   memory = 0;
   fn = '';
   sn = '';
   res = '';
   operation = '';
-  constructor() { }
-  ngOnInit(): void {
-  } 
+  histories = [];
+  results = [];
+  // ngOnInit(): void {
+  // } 
+  historyIconClicked() {
+    if(this.showHistory) this.showHistory = false
+    else this.showHistory = true;
+  }
   clickedNumber(event) {
     const value = event.target.innerText;
     if(this.res === "") {
@@ -43,23 +51,46 @@ export class MainComponent implements OnInit {
       this.display = value;
       this.res = '';
     }
-
   }
   clickedOperation(event) {
     const op = event.target.innerText;
     if(op === '+' || op === '–' || op === 'x' || op === '➗') {
+      if(this.operation) {
+        let history = "";
+        let answer = [];
+        answer = this.mainService.binaryOperator(this.operation, this.fn, this.display)
+        this.res = answer[0]
+        history = answer[1]
+        this.results.push(this.res);
+        this.histories.push(history)
+        this.fn = this.res;
+        this.display = this.res;
+        this.operation = op;
+        this.equalPressed = false;
+      }
+      else {
       this.fn = this.display;
       this.operation = op;
       this.display = '0';
+      }
     }
     else if(op === '=') {
-      this.sn = this.display;
-      this.binaryOperator();
-      this.display = this.res;
-      if(!this.equalPressed) {
-        this.fn = this.sn;
+      let history = "";
+      let answer = []
+      if(this.equalPressed) {
+        answer = this.mainService.binaryOperator(this.operation, this.res, this.sn);
+      }
+      else {                                             
+        this.sn = this.display;
+        answer = this.mainService.binaryOperator(this.operation, this.fn, this.sn);
         this.equalPressed = true;
       }
+      this.res = answer[0]
+      history = answer[1]
+      this.display = this.res;
+      this.results.push(this.res);
+      this.histories.push(history);
+      console.log(this.histories);
       this.backspaceAvailable = false;
     }
     else if(op === 'CE' || op === 'C') {
@@ -86,55 +117,14 @@ export class MainComponent implements OnInit {
     else {
       this.fn = this.display;
       this.operation = op;
-      this.unaryOperator();
+      const answer = this.mainService.unaryOperator(this.operation, this.fn);
+      this.res = answer[0];
+      const history = answer[1];
+      this.histories.push(history);
+      this.results.push(this.res);
+      this.display = this.res;
+      this.backspaceAvailable = false;
     }
-  }
-
-  unaryOperator() {
-    const op = this.operation
-    const fn = parseFloat(this.fn);
-    switch (op) {
-      case 'x^2':
-        this.res = (fn * fn).toString();
-        
-        break;
-      case '√':
-        this.res = (Math.sqrt(fn)).toString();
-        break;
-      case '%':
-        this.res = (fn/100).toString();
-        break;
-      case '|1/x|':
-        this.res = (1/fn).toString();
-        break;
-      default:
-        break;
-    }
-    this.display = this.res;
-    this.backspaceAvailable = false;
-  }
-  binaryOperator() {
-    const op = this.operation;
-    const fn = parseFloat(this.fn);
-    const sn = parseFloat(this.sn);
-    let res = 0;
-    switch (op) {
-      case '+':
-        res = fn + sn;
-        break;
-      case '–':
-        res = fn - sn;
-        break;
-      case 'x':
-        res = fn * sn;
-        break;
-      case '➗':
-        res = fn / sn;
-        break;
-      default:
-        break;
-    }
-    this.res = res.toString();
   }
   clear() {
     this.fn = '';
@@ -146,6 +136,10 @@ export class MainComponent implements OnInit {
     this.backspaceAvailable = true;
   }
   clearEntry() {}
+  removeHistory() {
+    this.results = [];
+    this.histories = []
+  }
   clickedMemoryButton(event) {
     const d = parseFloat(this.display);
     switch (event.target.innerText) {
