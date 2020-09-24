@@ -19,6 +19,7 @@ export class MainComponent {
 ];
   mSymbols = ['MC', 'MR', 'M+', 'M-', 'MS']
   display = '0';
+  miniDisplay = ' ';
   numberFound = false;
   equalPressed = false;
   equalFound = false;
@@ -39,7 +40,7 @@ export class MainComponent {
   }
   clickedNumber(event) {
     const value = event.target.innerText;
-    if(this.res === "") {
+    if(this.res === '') {
       if(this.display === '0') {
         this.display = value;
       }
@@ -73,6 +74,7 @@ export class MainComponent {
       this.operation = op;
       this.display = '0';
       }
+      this.miniDisplay += `${this.fn} ${op} `;
     }
     else if(op === '=') {
       let history = "";
@@ -85,17 +87,17 @@ export class MainComponent {
         answer = this.mainService.binaryOperator(this.operation, this.fn, this.sn);
         this.equalPressed = true;
       }
-      this.res = answer[0]
-      history = answer[1]
+      this.res = answer[0];
+      history = answer[1];
+      this.miniDisplay = history;
       this.display = this.res;
       this.results.push(this.res);
       this.histories.push(history);
       console.log(this.histories);
       this.backspaceAvailable = false;
     }
-    else if(op === 'CE' || op === 'C') {
-      this.clear()
-    }
+    else if(op === 'C') this.clear();
+    else if(op === 'CE') this.clearEntry();
     else if(op === '⌫') {
       if(this.backspaceAvailable) {
         if(this.display.length === 1) {
@@ -120,6 +122,7 @@ export class MainComponent {
       const answer = this.mainService.unaryOperator(this.operation, this.fn);
       this.res = answer[0];
       const history = answer[1];
+      this.miniDisplay = history;
       this.histories.push(history);
       this.results.push(this.res);
       this.display = this.res;
@@ -132,10 +135,14 @@ export class MainComponent {
     this.operation = '';
     this.res = '';
     this.display = '0';
+    this.miniDisplay = '';
     this.equalPressed = false;
     this.backspaceAvailable = true;
   }
-  clearEntry() {}
+  clearEntry() {
+    if(this.res !== '') this.clear();
+    this.display = '0';
+  }
   removeHistory() {
     this.results = [];
     this.histories = []

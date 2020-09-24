@@ -1,7 +1,7 @@
 .main {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 80%;
     width: 22%;
     color: white;
     background-color: #213d4b;
@@ -38,7 +38,7 @@
     align-items: center;
 }
 .ham {
-    height: 100%;
+    height: 90%;
     margin-left: 3%;
     padding: 5px;
 }
@@ -47,7 +47,7 @@
 }
 .st-text {
     margin-left: 4%;
-    font-size: 120%;
+    font-size: 110%;
 }
 .his {
     margin-left: auto;
@@ -55,6 +55,11 @@
 }
 .his:hover, .ham:hover, .remove-btn:hover {
     background-color: rgba(226, 224, 215, 0.158);
+}
+.mini-display {
+    text-align: right;
+    padding: 0 5%;
+    color: rgba(255, 255, 255, 0.555);
 }
 .display {
     text-align: right;

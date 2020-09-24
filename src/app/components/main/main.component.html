@@ -11,6 +11,9 @@
             <span class="st-text">Standard</span>
             <div class="ham his" (click)="historyIconClicked()"><img class="icons" src="../../../assets/images/history-icon.png"></div>
         </div>
+        <div class="mini-display">
+            {{this.miniDisplay}}
+        </div>
         <div class="display">
             {{this.display}}
         </div>
@@ -33,13 +36,16 @@
             </div>
         </div>
         <div *ngIf="showHistory" class="numbers-and-operations-block history">
-            <div style="overflow:auto; margin-bottom: 0.5%;">
+            <div *ngIf="this.results.length!==0" style="overflow:auto; margin-bottom: 0.5%;">
                 <div class="history-items" *ngFor="let h of histories; let i = index">
                     <div class="history-items-operation">{{h}}</div>
                     <div class="result">{{results[i]}}</div>
                 </div>
             </div>
-            <div class="remove-btn" (click)="removeHistory()"><img class="icons" src="../../../assets/images/delete.png"></div>
+            <div style="margin: 4% 0 0 4%" *ngIf="this.results.length===0">
+                Журнала еще нет
+            </div>
+            <div *ngIf="this.results.length!==0" class="remove-btn" (click)="removeHistory()"><img class="icons" src="../../../assets/images/delete.png"></div>
         </div>
     </div>
 </div>
