@@ -74,6 +74,7 @@ export class MainComponent {
       this.operation = op;
       this.display = '0';
       }
+      if(this.miniDisplay !== '') this.miniDisplay = '';
       this.miniDisplay += `${this.fn} ${op} `;
     }
     else if(op === '=') {

@@ -1,28 +1,31 @@
 .main {
     display: flex;
     flex-direction: column;
-    height: 80%;
-    width: 22%;
+    height: 60%;
+    width: 18%;
     color: white;
     background-color: #213d4b;
     font-size: 100%;
-    margin-left: 39%;
+    margin-left: 41%;
     font-family: sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    border-radius: 2px;
 }
 .title {
-    padding: 4% 5%;
-    font-size: 80%;
+    padding: 4% 0 0 5%;
+    font-size: 70%;
 }
 .top-block {
     display: flex;
+    width: 100%;
 }
 .top-block-hide {
     margin-left: auto;
 }
 .top-block button {
     background-color: #213d4b;
-    width: 15%;
-    font-size: 130%;
+    width: 14%;
+    font-size: 100%;
 }
 .top-block button:hover {
     background-color: rgba(226, 224, 215, 0.158);
@@ -40,14 +43,14 @@
 .ham {
     height: 90%;
     margin-left: 3%;
-    padding: 5px;
+    padding: 2px;
 }
 .icons {
     height: 100%;
 }
 .st-text {
     margin-left: 4%;
-    font-size: 110%;
+    font-size: 100%;
 }
 .his {
     margin-left: auto;
@@ -86,7 +89,7 @@
     background-color: rgba(226, 224, 215, 0.158);
 }
 .numbers-and-operations-block {
-    height: 65%;
+    height: 62%;
     margin-top: 2%;
 }
 .symbols {
