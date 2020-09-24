@@ -78,16 +78,20 @@
     margin-left: 3%;
     margin-right: 3%;
     font-size: 70%;
+    height: 5%;
 }
 .mBlock-detail {
-    width: 16.5%;
+    width: 18%;
     margin-left: 1%;
     text-align: center;
-    padding: 2% 0;
     flex: 1 0 15%;
 }
-.mBlock-detail:hover {
+.mBlock-detail button:hover {
     background-color: rgba(226, 224, 215, 0.158);
+}
+.mBlock-detail__button {
+    background-color: #213d4b;
+    width: 100%;
 }
 .numbers-and-operations-block {
     height: 62%;
