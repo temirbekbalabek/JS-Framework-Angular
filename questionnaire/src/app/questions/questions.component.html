@@ -17,29 +17,57 @@
             </div>
         </form>
     </section>
+    <section class="fill-section">
+
+        <form #fill="ngForm" (ngSubmit)="onSubmitQuestion()">
+        
+            <mat-form-field class="example-full-width width" required>
+                <input matInput placeholder="вопрос" name="question" required [(ngModel)]="questionText" >
+            </mat-form-field>
+            <mat-form-field class="select-type" appearance="fill" required>
+                <mat-label>Question type</mat-label>
+                <select matNativeControl name="selected-type" required>
+                    <option value="volvo">single choice</option>
+                    <option value="saab">multiple choice</option>
+                </select>
+            </mat-form-field>
+            <div *ngFor="let a of answers">
+                <mat-form-field class="example-full-width width">
+                    <input matInput [value]="a" readonly>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="example-full-width width" required> 
+                <input matInput placeholder="вариант" name="variant" [(ngModel)]="variant" id="variant" required>
+            </mat-form-field>
+            <button type="button" style="margin-left: 5%;" (click)="addVariant()" >Добавить</button>
+            <button type="submit" [disabled]='fill.invalid'>Отправить</button>
+        </form>
+    </section>
+
     <section class="second-section">
         <form (ngSubmit)="submit()" #form="ngForm">
             <!-- <input type="text" name="login" required [(ngModel)]="login">
             <input type="password" name="password" [(ngModel)]="password"> -->
             
             <div *ngIf="startQuiz" class="questions">
-                <div *ngFor="let question of singleChoiceQuestions; let i = index" class="each-question">
-                    <pre>{{i+1}}. {{question}}</pre>
-                    <mat-radio-group [name]="question" required ngModel="" #question="ngModel">
-                        <mat-radio-button value="true"color="primary" >True</mat-radio-button>
-                        <br><br>
-                        <mat-radio-button value="false" color="warn">False</mat-radio-button>
-                     </mat-radio-group> 
-
+                <div *ngFor="let qWithA of questionsWithAnswer; let i = index" class="each-question">
+                    <pre>{{i+1}}. {{qWithA.question}}</pre>
+                    <div *ngFor="let ans of qWithA.answers; let y = index">
+                        <mat-radio-group [name]="qWithA.question" required ngModel="" #question="ngModel" >
+                            <mat-radio-button [value]="ans+y" color="primary">{{ans}}{{y}}</mat-radio-button>
+                            <br><br>
+                            <!-- <mat-radio-button value="false" color="warn">False</mat-radio-button> -->
+                         </mat-radio-group> 
+                    </div>
                 </div>
-                <button type="submit" [disabled]="form.invalid">Submit</button>
-                <pre>
-                    {{loginForm.value | json}}
-                    {{form.value | json}}
-                </pre>
+                
             </div>
+            <button mat-button color="primary" [disabled]="form.invalid">Завершить</button>
         </form>
-        
+        <pre>
+            {{loginForm.value | json}}
+            {{form.value | json}}
+        </pre>
         
     </section>
   </div> 

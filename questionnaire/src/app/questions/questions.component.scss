@@ -16,11 +16,27 @@
     width: 90%;
 }
 .each-question {
+    margin-top: 4%;
+    width: 60%;
+    margin-left: 20%;
+    padding-left: 2%;
     width: 50%;
+    box-shadow: 0 0 5px rgb(51, 83, 153);
 }
 input {
 }
-
+.fill-section {
+    padding-top: 2%;
+    width: 50%;
+    margin-left: 25%;
+    box-shadow: 0 0 10px peachpuff;
+    padding-left: 5%;
+    height: 22%;
+}
+.width {
+    width: 40%;
+    font-size: 16px;
+}
 .example-container {
     display: flex;
     flex-direction: column;
@@ -33,4 +49,16 @@ input {
 }
 .example-container input {
     width: 100%;
+}
+.select-type {
+    margin-left: 5%;
+    width: 30%;
+}
+.second-section button {
+    margin-top: 5%;
+    width: 10%;
+    margin-left: 45%;
+    background-color: rgb(24, 179, 24);
+    color: white;
+    // margin-bottom: 5%;
 }

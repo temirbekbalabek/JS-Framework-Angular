@@ -24,16 +24,31 @@ export class QuestionsComponent implements OnInit {
     "The unicorn is the national animal of Scotland",
     "There are two parts of the body that can't heal themselves",
   ]
-  singleChoiceAnswers = ["False", "True", "False", "False", "False", "True", "False", "True", "True", "False"]
+  questionsWithAnswer = [
+    {
+      question: "asdf",
+      answers: [
+        "1",
+        "2"
+      ]
+    }
+  ];
+  answers = [];
 
   
   @ViewChild('form', { static: true })
   form: NgForm;
 
+  @ViewChild('fill', { static: true })
+  fill: NgForm;
+
   login: string;
   password = '';
   hide = true;
-  startQuiz = false;
+  startQuiz = true;
+  variant = '';
+  questionText = '';
+
   emailCtrl = new FormControl('', [
     Validators.required, 
     Validators.email, 
@@ -45,6 +60,10 @@ export class QuestionsComponent implements OnInit {
     email: this.emailCtrl,
     password: this.passwordCtrl
   });
+  addVariant() {
+    const v = this.fill.form.value.variant;
+    if(v !== "") this.answers.push(this.fill.form.value.variant)
+  }
   submit() {
     console.log("1 form");
   }
@@ -55,6 +74,16 @@ export class QuestionsComponent implements OnInit {
     if(this.loginForm.valid) {
       this.startQuiz = true;
     }
+  }
+  onSubmitQuestion(){
+    if(this.answers.length === 0) this.addVariant();
+    this.questionsWithAnswer.push(
+      {
+        question: this.fill.form.value.question,
+        answers: this.answers
+      });
+    this.answers = [];
+    console.log(this.questionsWithAnswer)
   }
 
 }
