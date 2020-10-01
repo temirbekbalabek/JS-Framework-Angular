@@ -1,0 +1,63 @@
+
+<app-questions></app-questions>
+
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    Forms Playground
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="wrappers">
+  <section>
+    <h1>Template Driven</h1>
+    <form #templateDrivenForm="ngForm">
+      <input 
+      type="text" 
+      name="login" 
+      [(ngModel)]="login"
+      required 
+      email 
+      [minlength]="4"
+      >
+      <input type="password" name="password" [(ngModel)]="password">
+      <button type="submit" [disabled]="templateDrivenForm.invalid">Submit</button>
+    </form>
+    <pre>
+      {{templateDrivenForm.valid}}
+      {{templateDrivenForm.value | json}}
+    </pre>
+  </section>
+  <section>
+    <h1>Reactive</h1>
+    <form #ReactiveForm="ngForm" [formGroup]="loginForm">
+      <input type="text" name="login" required [formControl]="loginCtrl">
+      <input type="password" name="password" [formControl]="passwordCtrl">
+      <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+    </form>
+    <pre>
+      {{loginForm.value | json}}
+    </pre>
+  </section>
+</div> -->
+
+<!-- <form (ngSubmit)="submit()">
+  <input type="text" name="login" [(ngModel)]="login">
+  <input type="password" name="password" [(ngModel)]="password">
+  <button type="submit">Submit</button>
+</form>
+
+<pre>
+  login: {{login}}
+  password: {{password}}
+</pre>
+
+<form (ngSubmit)="submit2()" #form="ngForm">
+  <input type="text" name="login" [(ngModel)]="login" required>
+  <input type="password" name="password" [(ngModel)]="password" required>
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+  <pre>
+    {{form.valid}}
+    {{form.value | json}}
+  </pre>
+</form> -->
+

@@ -1,0 +1,46 @@
+<div class="wrappers">
+    <section class="first-section">
+        <form #formUser [formGroup]="loginForm">
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="emailCtrl" name="" email required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordCtrl" name="password" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="startQuizClicked()" [disabled]="loginForm.invalid">START QUIZ</button>
+            </div>
+        </form>
+    </section>
+    <section class="second-section">
+        <form (ngSubmit)="submit()" #form="ngForm">
+            <!-- <input type="text" name="login" required [(ngModel)]="login">
+            <input type="password" name="password" [(ngModel)]="password"> -->
+            
+            <div *ngIf="startQuiz" class="questions">
+                <div *ngFor="let question of singleChoiceQuestions; let i = index" class="each-question">
+                    <pre>{{i+1}}. {{question}}</pre>
+                    <mat-radio-group [name]="question" required ngModel="" #question="ngModel">
+                        <mat-radio-button value="true"color="primary" >True</mat-radio-button>
+                        <br><br>
+                        <mat-radio-button value="false" color="warn">False</mat-radio-button>
+                     </mat-radio-group> 
+
+                </div>
+                <button type="submit" [disabled]="form.invalid">Submit</button>
+                <pre>
+                    {{loginForm.value | json}}
+                    {{form.value | json}}
+                </pre>
+            </div>
+        </form>
+        
+        
+    </section>
+  </div> 
+  

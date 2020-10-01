@@ -1,0 +1,36 @@
+.wrappers {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+.first-section {
+    margin: 5% 0;
+    width: 100%;
+    text-align: center;
+}
+.questions {
+    
+    display: flex;
+    margin-left: 10%;
+    flex-wrap: wrap;
+    width: 90%;
+}
+.each-question {
+    width: 50%;
+}
+input {
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    margin-left: 38%;
+}
+.example-container button {
+    width: 50%;
+    margin-left: 25%;
+}
+.example-container input {
+    width: 100%;
+}
