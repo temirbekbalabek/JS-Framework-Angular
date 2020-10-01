@@ -24,15 +24,7 @@ export class QuestionsComponent implements OnInit {
     "The unicorn is the national animal of Scotland",
     "There are two parts of the body that can't heal themselves",
   ]
-  questionsWithAnswer = [
-    {
-      question: "asdf",
-      answers: [
-        "1",
-        "2"
-      ]
-    }
-  ];
+  questionsWithAnswer = [];
   answers = [];
 
   
@@ -45,7 +37,7 @@ export class QuestionsComponent implements OnInit {
   login: string;
   password = '';
   hide = true;
-  startQuiz = true;
+  startQuiz = false;
   variant = '';
   questionText = '';
 
@@ -83,7 +75,10 @@ export class QuestionsComponent implements OnInit {
         answers: this.answers
       });
     this.answers = [];
-    console.log(this.questionsWithAnswer)
+    console.log(this.questionsWithAnswer);
+    this.questionText = '';
+    this.variant = '';
   }
+
 
 }

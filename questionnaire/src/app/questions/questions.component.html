@@ -13,7 +13,7 @@
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="startQuizClicked()" [disabled]="loginForm.invalid">START QUIZ</button>
+                <button mat-raised-button color="primary" (click)="startQuizClicked()" [disabled]="loginForm.invalid">START CREATING QUIZ</button>
             </div>
         </form>
     </section>
@@ -53,8 +53,8 @@
                 <div *ngFor="let qWithA of questionsWithAnswer; let i = index" class="each-question">
                     <pre>{{i+1}}. {{qWithA.question}}</pre>
                     <div *ngFor="let ans of qWithA.answers; let y = index">
-                        <mat-radio-group [name]="qWithA.question" required ngModel="" #question="ngModel" >
-                            <mat-radio-button [value]="ans+y" color="primary">{{ans}}{{y}}</mat-radio-button>
+                        <mat-radio-group [name]='qWithA.question' required ngModel="" #question="ngModel" >
+                            <mat-radio-button [value]="ans" color="primary">{{ans}}{{y}}</mat-radio-button>
                             <br><br>
                             <!-- <mat-radio-button value="false" color="warn">False</mat-radio-button> -->
                          </mat-radio-group> 
@@ -62,12 +62,15 @@
                 </div>
                 
             </div>
-            <button mat-button color="primary" [disabled]="form.invalid">Завершить</button>
+            <button mat-raised-button  color="primary" [disabled]="form.invalid">Завершить</button>
+
         </form>
+
         <pre>
             {{loginForm.value | json}}
             {{form.value | json}}
         </pre>
+
         
     </section>
   </div> 
