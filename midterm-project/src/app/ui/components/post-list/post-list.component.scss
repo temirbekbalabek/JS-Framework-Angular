@@ -1,0 +1,69 @@
+.wrapper {
+    width: 100%;
+}
+.filter-by-author {
+    width: 24%;
+    margin-left: 38%;
+    display: flex;
+    margin-bottom: 1%;
+    height: 40px;
+}
+.create-form {
+    width: 40%;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+.create-btn {
+    width: 30%;
+    margin-left: auto;
+}
+.filter-btn {
+    width: 30%;
+    margin-left: auto;
+}
+.posts {
+    width: 60%;
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+.one-post {
+    box-shadow: 0 0 5px rgb(48, 47, 47);
+    border-radius: 2px;
+    padding: 1.5%;
+    margin-bottom: 2%;
+}
+.comments {
+    border-top: 1px solid silver;
+    padding-top: 1%;
+}
+.comment-btn {
+    cursor: pointer;
+}
+.user-name {
+    font-weight: bold;
+    color: #5181b8;
+    margin-left: 1%;
+}
+.user-email {
+    color: blue;
+    cursor: pointer;
+}
+.user-photo {
+    width: 4%;
+}
+.user-photo img {
+    border-radius: 30%;
+    width: 100%;
+}
+.user {
+    width: 100%;
+    display: flex;
+}
+.create-comment {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}

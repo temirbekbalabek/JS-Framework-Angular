@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2%;
+    background-color: white;
+    border-bottom: 1px solid #DBDBDB;
+}
+.header button {
+    width: 15%;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+.album-btn {
+    margin-left: 2%;
+}
+.post-btn {
+    margin-left: 35%;
+}
+.logout-btn {
+    margin-left: auto;
+    margin-right: 5%;
+    color: white;
+    background-color: #22CE93;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 3% !important;
+    box-shadow: 0 0 3px black;
+}
+.logout-btn:hover {
+    background-color: #37a17c;
+}
+.logout-btn:active{background-color: silver;}
+.logout-btn:focus {outline:0;}

@@ -1,0 +1,67 @@
+<div class="wrapper">
+    {{this.getUsersForPosts()}}
+    <div class="filter-by-author">
+        <mat-form-field class="">
+            <mat-label>Filter By Author</mat-label>
+            <input matInput placeholder="Author Name" [(ngModel)]="filterText">
+        </mat-form-field>
+        <button mat-stroked-button (click)="filterByAuthor()" class="filter-btn">FiLTER</button>
+
+    </div>
+    <div class="create-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Ex. voluptatem eligendi optio" [(ngModel)]="newPostTitle">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Post body</mat-label>
+          <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="newPostBody"></textarea>
+        </mat-form-field>
+        <button mat-stroked-button (click)="createPost()" class="create-btn">Create Post</button>
+    </div>
+    <div class="posts">
+        <div class="one-post" *ngFor="let post of posts; let i = index">
+            <div class="user">
+                <div class="user-photo">
+                    <img src="assets/images/humanIcon2.jpg">
+                </div>
+                <span class="user-name">{{usersForPosts[i].username}}</span>
+            </div>
+            <h1>{{post.title}}</h1>
+            <pre>{{post.body}}s</pre>
+            {{getCommentsLength(post.id)}}
+            <div class="comment-btn" (click)="showCommentsOfThisPost(i, post.id)">
+                <mat-icon [matBadge]="this.commentsLength" matBadgeColor="warn">comment</mat-icon>
+                <!-- Include text description of the icon's meaning for screen-readers -->
+                <span class="cdk-visually-hidden">
+                    Example with a home icon with overlaid badge showing the number 15
+                </span>
+            </div>
+            <div *ngIf="showComment[i]">
+                <div class="comments" *ngFor="let c of commentsOfOnePost">
+                    <p class="user-name">{{c.name}}</p>
+                    <p class="user-email">{{c.email}}</p>
+                    <pre class="comment-body">{{c.body}}</pre>
+                </div>
+                <form class="create-comment" #createCommentForm="ngForm" (ngSubmit)="createComment(post.id, i)">
+                    <div class="user">
+                        <div class="user-photo">
+                            <img src="https://cdn2.vectorstock.com/i/1000x1000/47/36/human-man-user-profile-avatar-glyph-icon-vector-10704736.jpg">
+                        </div>
+                        <span class="user-name">{{this.username}}</span>
+                    </div>
+                    <mat-form-field class="">
+                        <mat-label>comment name</mat-label>
+                        <input matInput placeholder="name" name="commentName" [(ngModel)]="commentName" required>
+                    </mat-form-field>
+                    <mat-form-field class="">
+                        <mat-label>comment body</mat-label>
+                        <input matInput placeholder="body" name="commentBody" [(ngModel)]="commentBody" required>
+                    </mat-form-field>
+                    <button mat-stroked-button color="warn" type="submit" [disabled]="createCommentForm.invalid" class="create-btn">Create Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="header">
+    <button mat-raised-button 
+    class="post-btn" 
+    [color]="postsActive.isActive ? 'accent' : null "
+    routerLink="/posts"
+    routerLinkActive="active"
+    #postsActive="routerLinkActive"
+    >
+        POSTS
+    </button>
+    <button mat-raised-button 
+    [color]="albumsActive.isActive ? 'accent' : null " 
+    class="album-btn" 
+    routerLink="/albums"
+    routerLinkActive="active"
+    #albumsActive="routerLinkActive"
+    >
+        ALBUMS
+    </button>
+    <button class="logout-btn" (click)="logout()">LOG OUT</button>
+</div>

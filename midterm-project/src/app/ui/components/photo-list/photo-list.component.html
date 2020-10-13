@@ -1,0 +1,4 @@
+<app-photo *ngFor="let photo of photos" [photo]="photo" class="photos">
+    <img [src]="this.photo.url" class="photo-image">
+    <div class="bottom-left">{{this.photo.title.slice(0, 40)}}...</div>
+</app-photo>

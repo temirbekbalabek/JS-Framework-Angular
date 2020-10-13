@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div *ngFor="let a of albums" class="album">
+        {{getUser(a)}}
+        <div class="user">
+            <div class="user-photo">
+                <img src="assets/images/human-icon.png">
+            </div>
+        </div>
+        <p class="album-title"><span class="user-name">{{this.foundUser.name}}</span>'s Album: {{a.title}}</p>
+
+        <!-- <h1 class="album-title">{{a.title}}</h1> -->
+        <app-photo-list [album]="a" class="photo-list"></app-photo-list>
+    </div>
+</div>
