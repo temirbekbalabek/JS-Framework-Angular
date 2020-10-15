@@ -12,6 +12,8 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 const MODULES = [
   MatToolbarModule,
@@ -25,7 +27,9 @@ const MODULES = [
   MatRadioModule,
   MatIconModule,
   MatBadgeModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatSnackBarModule,
+  MatSidenavModule
 ]
 
 @NgModule({

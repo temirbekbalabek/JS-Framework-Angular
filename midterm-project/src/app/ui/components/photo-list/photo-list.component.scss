@@ -1,17 +1,28 @@
-.photos {
-    width: 30%;
-}
-.photo-image {
+
+.example-container {
     width: 100%;
-}
-.bottom-left {
-    position: absolute;
-    top: 0;
-    text-transform: uppercase;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    background-color: rgba(252, 243, 167, 0.356);
-    width: 100%;
-    line-height: 50px;
-    color: black;
-}
+    min-height: 83%;
+    
+  }
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-second-image {
+    background-image: url('../../../../assets/images/avatar2.jpg');
+    background-size: cover;
+  }
+  
+  .photo-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .photo {
+    max-width: 350px;
+    margin-bottom: 10px;
+  }
+  .photo img {
+    margin-top: 5px;
+  }

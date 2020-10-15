@@ -1,4 +1,17 @@
-<app-photo *ngFor="let photo of photos" [photo]="photo" class="photos">
-    <img [src]="this.photo.url" class="photo-image">
-    <div class="bottom-left">{{this.photo.title.slice(0, 40)}}...</div>
-</app-photo>
+<mat-drawer-container class="example-container">
+    <mat-drawer-content>
+        <h1 style="text-align: center; font-weight: 500; margin: 20px 0" *ngIf="album">Photos of {{album.title}}</h1>
+        <div class="photo-list">
+            <div class="photo" *ngFor="let p of photos; let i = index;">           
+                <mat-card class="example-card">
+                    <mat-card-header>
+                    <div mat-card-avatar class="example-header-second-image"></div>
+                    <mat-card-title *ngIf="this.user">{{user.name}}</mat-card-title>
+                    <mat-card-subtitle>{{p.title}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image [src]="p.url" alt="Photo">
+                </mat-card>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

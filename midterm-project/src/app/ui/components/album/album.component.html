@@ -1,14 +1,40 @@
-<div class="wrapper">
-    <div *ngFor="let a of albums" class="album">
-        {{getUser(a)}}
-        <div class="user">
-            <div class="user-photo">
-                <img src="assets/images/human-icon.png">
+
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened class="user-list">
+        <mat-card class="example-card">
+            <mat-card-header *ngFor="let u of users" style="border-bottom: 1px solid rgb(197, 194, 194); margin:8px 0; min-height: 60px;">
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{u.name}}</mat-card-title>
+                <mat-card-subtitle>{{u.company.name}}</mat-card-subtitle>
+
+                <mat-card-actions style="margin-left: auto;">
+                    <button mat-button (click)="getAlbumsOfThisUser(u.id)" >Show Albums</button>
+                </mat-card-actions>
+            </mat-card-header>
+          </mat-card>
+    </mat-drawer>
+    
+    <mat-drawer-content *ngIf="this.albums.length > 0">
+        <h1 style="text-align: center; font-weight: 500;">My Albums</h1>
+        <div class="album-list">
+            <div class="album" *ngFor="let a of albums; let i = index;">           
+                <div *ngIf="firstPhotoOfAlbum[i] && a.id === firstPhotoOfAlbum[i].albumId">
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                        <div mat-card-avatar class="example-header-second-image"></div>
+                        <mat-card-title>{{a.title}}</mat-card-title>
+                        <mat-card-subtitle></mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image [src]="firstPhotoOfAlbum[i].photo.url" alt="Photo">
+                        <mat-card-actions style="text-align: center;">
+                        <button mat-button [routerLink]="['/albums',a.id, 'photos']" >MORE</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
             </div>
         </div>
-        <p class="album-title"><span class="user-name">{{this.foundUser.name}}</span>'s Album: {{a.title}}</p>
 
-        <!-- <h1 class="album-title">{{a.title}}</h1> -->
-        <app-photo-list [album]="a" class="photo-list"></app-photo-list>
-    </div>
-</div>
+    </mat-drawer-content>
+    <mat-drawer-content *ngIf="this.albums.length === 0" class="no-content">Choose any user to see his/her list of albums</mat-drawer-content>
+
+</mat-drawer-container>

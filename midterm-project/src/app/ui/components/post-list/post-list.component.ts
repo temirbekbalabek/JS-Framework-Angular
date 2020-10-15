@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MyService } from 'src/app/my-service.service';
 import { IUser, IPost, IComment } from 'src/app/data';
 import { componentFactoryName } from '@angular/compiler';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-post-list',
@@ -11,7 +12,7 @@ import { componentFactoryName } from '@angular/compiler';
 })
 export class PostListComponent implements OnInit {
 
-  constructor(public service: MyService, public router: Router) {
+  constructor(public service: MyService, public router: Router, public _snackBar: MatSnackBar) {
    }
 
   ngOnInit(): void {
@@ -111,8 +112,11 @@ export class PostListComponent implements OnInit {
       this.service.createPost(foundUser.id, this.newPostTitle, this.newPostBody).subscribe((data) => 
           {
             console.log('post created', data);
-            window.location.reload();
+            this._snackBar.open(this.newPostTitle, this.newPostBody, {
+              duration: 2000,
+            });
           },
+
           error => console.log(error)
       );
     }

@@ -15,22 +15,12 @@ export class AlbumComponent implements OnInit {
   ngOnInit(): void {
     if(!localStorage.getItem('token'))
     this.router.navigate(['']);
-    this.getAlbums();
     this.getUsers();
   }
 
   albums: IAlbum[] = [];
-  foundUser: IUser;
-  users: IUser[];
-  getAlbums() {
-    this.service.subscribeForAlbums().subscribe((albums) => {
-      this.albums = albums;
-      console.log(this.albums, 'albums');
-    });
-  }
-  getUser(album: IAlbum) {
-    this.foundUser = this.users.find(u => u.id === album.userId);
-  }
+  users: IUser[] = [];
+  firstPhotoOfAlbum: any = [];
   getUsers() {
     this.service
       .subscribeForUsers()
@@ -38,6 +28,27 @@ export class AlbumComponent implements OnInit {
       .subscribe((users) => {
         this.users = users;
       });
+  }
+  getAlbumsOfThisUser(userId: number) {
+    this.service.subscribeForAlbumsOfThisUser(userId).subscribe((albums) => {
+      this.albums = albums;
+      this.getFirstPhotoOfAlbum();
+    });
+  }
+  getFirstPhotoOfAlbum() {
+    this.firstPhotoOfAlbum = [];
+    this.albums.forEach(a => {
+      this.service.subscribeForPhotosOfCurrentAlbum(a.id).subscribe((photos) => {
+        this.firstPhotoOfAlbum.push({
+          albumId: a.id,
+          photo: photos.pop()
+        })
+      });
+    })
+    console.log(this.firstPhotoOfAlbum)
+  }
+  more(albumId: number) {
+    this.router.navigate([`albums/${albumId}/photos`])
   }
 
 }

@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomMaterialModule } from '../custom-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,7 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
     CustomMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    RouterModule
   ]
 })
 export class UiModule { }

@@ -1,45 +1,40 @@
-.wrapper {
-    width: 100%;
+
+.example-container {
+  width: 100%;
+  min-height: 83%;
+  
+}
+.user-list {
+  width: 30%;
+}
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('../../../../assets/images/avatar.jpg');
+  background-size: cover;
+}
+.example-header-second-image {
+  background-image: url('../../../../assets/images/avatar2.jpg');
+  background-size: cover;
+}
+
+.no-content {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 28px;
+  line-height: 28px;
+}
+.album-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .album {
-    border-bottom: 1px solid #DBDBDB;
-    padding: 3% 5% 5% 5%;
+  max-width: 350px;
+  margin-bottom: 10px;
 }
-.photo-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.photo-list {
-
-}
-.album-title {
-    width: 100%;
-    text-transform: uppercase;
-    color: #4a76a8;
-    font-weight: bold;
-    margin-bottom: 2%;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-}
-.user-photo {
-    width: 20%;
-    margin-left: 28%;
-    margin-bottom: 2%;
-}
-.user-photo img {
-    border-radius: 30%;
-    width: 100%;
-}
-.user {
-    width: 100%;
-    display: flex;
-    margin-left: 40%;
-    width: 30%;
-}
-.user-name {
-    background-color: #22CE93;
-    color: white;
-    padding: 3px
+.album img {
+  margin-top: 5px;
 }

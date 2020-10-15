@@ -1,5 +1,6 @@
 .wrapper {
     width: 100%;
+    margin-top: 2%;
 }
 .filter-by-author {
     width: 24%;
@@ -30,6 +31,7 @@
     flex-direction: column;
 }
 .one-post {
+    width: 100%;
     box-shadow: 0 0 5px rgb(48, 47, 47);
     border-radius: 2px;
     padding: 1.5%;
@@ -52,7 +54,7 @@
     cursor: pointer;
 }
 .user-photo {
-    width: 4%;
+    width:6%;
 }
 .user-photo img {
     border-radius: 30%;

@@ -5,13 +5,14 @@ import { PostListComponent } from './ui/components/post-list/post-list.component
 import { AlbumComponent } from './ui/components/album/album.component';
 import { LoginComponent } from './ui/components/login/login.component';
 import { NotFoundComponent } from './ui/components/not-found/not-found.component';
+import { PhotoListComponent } from './ui/components/photo-list/photo-list.component';
 
 const routes: Routes = [
   { path: 'posts', component:  PostListComponent},
   { path: 'albums', component:  AlbumComponent},
   { path: '', component:  LoginComponent},
-  {path: '**', component: NotFoundComponent}
-
+  { path: 'albums/:id/photos', component: PhotoListComponent},
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
