@@ -1,7 +1,7 @@
 <div class="header">
     <button mat-raised-button 
     class="post-btn" 
-    [color]="postsActive.isActive ? 'accent' : null "
+    [color]="postsActive.isActive ? 'primary' : null "
     routerLink="/posts"
     routerLinkActive="active"
     #postsActive="routerLinkActive"
@@ -9,7 +9,7 @@
         POSTS
     </button>
     <button mat-raised-button 
-    [color]="albumsActive.isActive ? 'accent' : null " 
+    [color]="albumsActive.isActive ? 'primary' : null " 
     class="album-btn" 
     routerLink="/albums"
     routerLinkActive="active"

@@ -17,7 +17,7 @@
     <mat-drawer-content *ngIf="this.albums.length > 0">
         <h1 style="text-align: center; font-weight: 500;">My Albums</h1>
         <div class="album-list">
-            <div class="album" *ngFor="let a of albums; let i = index;">           
+            <app-album-conpro class="album" *ngFor="let a of albums; let i = index;" [album]="a">           
                 <div *ngIf="firstPhotoOfAlbum[i] && a.id === firstPhotoOfAlbum[i].albumId">
                     <mat-card class="example-card">
                         <mat-card-header>
@@ -31,7 +31,7 @@
                         </mat-card-actions>
                     </mat-card>
                 </div>
-            </div>
+            </app-album-conpro>
         </div>
 
     </mat-drawer-content>

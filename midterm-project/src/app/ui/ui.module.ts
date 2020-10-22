@@ -11,6 +11,7 @@ import { CustomMaterialModule } from '../custom-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AlbumConproComponent } from './components/album-conpro/album-conpro.component';
 
 
 
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     PhotoListComponent,
     PhotoComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AlbumConproComponent
   ],
   imports: [
     CommonModule,

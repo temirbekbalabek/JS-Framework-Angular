@@ -43,7 +43,8 @@ export class PostListComponent implements OnInit {
       .subscribeForUsers()
       // .pipe(map((todos) => todos.filter((todo) => !todo.completed)))
       .subscribe((users) => {
-        this.users = users;
+        this.users = users,
+        (error) => {console.log('USERS ERRRRRROR')}
       });
   }
 
@@ -106,6 +107,7 @@ export class PostListComponent implements OnInit {
     }
   }
   createPost() {
+    console.log('create button')
     const foundUser = this.users.find(u => u.username === this.username && u.password === this.password)
     let newPost: IPost;
     if(foundUser) {

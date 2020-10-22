@@ -142,7 +142,10 @@ export class LoginComponent implements OnInit{
           (data) => 
           {
             console.log('registrate', data);
-            this.login({username: this.firstForm.value.username, password: this.firstForm.value.password});
+            this.login(
+              {
+                value: {username: this.firstForm.value.username, password: this.firstForm.value.password}
+              });
             this.router.navigate(['posts'])
 
           },
