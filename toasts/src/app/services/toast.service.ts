@@ -2,7 +2,6 @@ import {Injectable, Injector} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {AlertComponent} from '../components/alert/alert.component';
-import { take } from 'rxjs/operators';
 import {DIALOG_CONFIG} from './toast.tokens';
 import {IAlertConfig, IConfirmConfig} from '../types';
 
@@ -25,13 +24,6 @@ export class ToastService {
       });
       const portal = new ComponentPortal(AlertComponent, null, injector);
       overlay.attach(portal);
-      // overlay
-      //   .backdropClick()
-      //   .pipe(take(1))
-      //   .subscribe(() => {
-      //     overlay.dispose();
-      //     resolve();
-      //   });
     });
   }
 

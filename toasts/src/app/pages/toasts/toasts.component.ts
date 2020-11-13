@@ -24,8 +24,8 @@ export class ToastsComponent implements OnInit {
     content: this.contentCtrl,
   });
   selectCtrl = new FormControl(1, [Validators.required]);
-  verticalCtrl = new FormControl('0px', [Validators.required]);
-  horizontalCtrl = new FormControl('0px', [Validators.required]);
+  verticalCtrl = new FormControl('1px', [Validators.required]);
+  horizontalCtrl = new FormControl('1px', [Validators.required]);
   showTitleCtrl = new FormControl(true, [Validators.required]);
   hasCloseBtnCtrl = new FormControl(true, [Validators.required]);
   showDurationCtrl = new FormControl(true, [Validators.required]);
