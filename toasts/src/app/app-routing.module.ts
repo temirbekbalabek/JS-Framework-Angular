@@ -1,21 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DialogPageComponent } from './pages/dialog-page/dialog-page.component';
-import { ToastsPageComponent } from './pages/toasts-page/toasts-page.component';
+import {ToastsComponent} from './pages/toasts/toasts.component';
 
 const routes: Routes = [
-    {
-        path: 'dialog',
-        component: DialogPageComponent,
-    },
-    {
-        path: 'toasts',
-        component: ToastsPageComponent,
-    },
+  {path: '', redirectTo: 'toasts', pathMatch: 'full'},
+  {path: 'toasts', component: ToastsComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

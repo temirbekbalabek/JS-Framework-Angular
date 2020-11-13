@@ -3,20 +3,41 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiModule } from './ui/ui.module';
-import { DialogPageComponent } from './pages/dialog-page/dialog-page.component';
-import { ToastsPageComponent } from './pages/toasts-page/toasts-page.component';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+import {OverlayModule} from '@angular/cdk/overlay';
+import { ToastsComponent } from './pages/toasts/toasts.component';
+import { AlertComponent } from './components/alert/alert.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { SecondComponent } from './components/second/second.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogPageComponent,
-    ToastsPageComponent
+    ToastsComponent,
+    AlertComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UiModule
+    NoopAnimationsModule,
+    MatToolbarModule,
+    OverlayModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSliderModule,
+    FormsModule,
+    MatProgressBarModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
